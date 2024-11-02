@@ -77,17 +77,31 @@ body {
     text-decoration: underline;
 }
 
-.button {  
-    display: inline-block; /* Makes the link behave like a button */  
-    padding: 10px 20px; /* Adds padding around the text */  
-    background-color: #007bff; /* Button background color */  
-    color: white; /* Text color */  
-    text-align: center; /* Centers the text */  
-    text-decoration: none; /* Removes underline from the link */  
-    border-radius: 5px; /* Rounds the corners */  
-    transition: background-color 0.3s; /* Smooth transition for hover effect */  
-}  
+/* Basic reset for button styling */
+button, .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #0073e6; /* Main button color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-.button:hover {  
-    background-color: #0056b3; /* Darker shade on hover */  
-}  
+button:hover, .button:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+}
+
+button:focus, .button:focus {
+    outline: 2px solid #004a99; /* Optional focus effect for accessibility */
+}
+
+button:active, .button:active {
+    background-color: #004a99; /* Even darker shade on active click */
+}
+
