@@ -1,5 +1,3 @@
-Welcome to the official website of Ebrahim Mousavi!
-
 # Overview
 
 This website serves as a personal portfolio and resource hub for Ebrahim Mousavi. Here, you can find information about my professional background, projects, research interests, and ways to connect with me.
