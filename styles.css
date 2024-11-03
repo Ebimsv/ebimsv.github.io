@@ -83,7 +83,7 @@ button, .button {
     padding: 10px 20px;
     margin-top: 15px;
     background-color: #0073e6; /* Main button color */
-    color: white;
+    color: black; 
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -96,7 +96,7 @@ button, .button {
 button:hover, .button:hover {
     background-color: #005bb5; /* Darker shade on hover */
 }
-
+ 
 button:focus, .button:focus {
     outline: 2px solid #004a99; /* Optional focus effect for accessibility */
 }
@@ -104,4 +104,3 @@ button:focus, .button:focus {
 button:active, .button:active {
     background-color: #004a99; /* Even darker shade on active click */
 }
-
