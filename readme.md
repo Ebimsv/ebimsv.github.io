@@ -14,12 +14,42 @@ Welcome to my personal portfolio. I'm Ebrahim Mousavi, an AI researcher and deve
 
 ---
 
+## 🏆 Current Roles
+
+- **AI Team Lead – LLMs & Agents**  
+  *Makan System* (Aug 2024 – Present)  
+  Leading LLM design and fine-tuning, multi-GPU training, and RAG pipeline development.
+
+- **AI Instructor**  
+  *Freelancer* (July 2023 – Present)  
+  Published 100+ tutorials on ML, NLP, and LLMs. Developed curriculum for AI workflows.
+---
+
+## 🏆 Previous Experience
+
+- **Senior Computer Vision Developer**  
+  *AIHomeDesign, Vancouver, Canada* (Sep 2023 – Feb 2024)  
+  Developed and deployed vision-language models for real estate applications.
+
+- **Deep Learning Researcher**  
+  *Baharan Company & Freelance* (Jan 2021 – Aug 2023)  
+  AI solutions for computer vision and NLP.
+
+---
+
+## 📚 Education
+
+- **MSc in IT** – *Tarbiat Modares University* (2018–2021)  
+  Thesis: Fashion Recommendation System
+
+- **BSc in Software Engineering** – *Islamic Azad University* (2009–2015)  
+  Thesis: Pyramid Security System for Networks
+
 ## 🔧 Key Expertise
 
 - Large Language Models (LLMs) & Transformers
 - Generative AI (Diffusion Models, GANs, VAEs)
 - Computer Vision (Image Segmentation, Virtual Staging)
-- NLP (Semantic Search, Sentiment Analysis, RAG)
 - Model Deployment (TorchServe, FastAPI, Docker)
 - MLOps, Self-Supervised Learning, Multi-task Learning
 
@@ -30,7 +60,7 @@ Welcome to my personal portfolio. I'm Ebrahim Mousavi, an AI researcher and deve
 - **Defective Image Generator** – [Resana/Rutelia, Japan]
 - **Virtual Staging AI** – [AIHomeDesign, Canada]
 - **Medical Imaging AI** – Chest and blood cancer detection
-- **LLM Fine-Tuning & NLP Systems** – BERT fine-tuning, Language Modeling
+- **LLM Fine-Tuning & NLP Systems** – Language Modeling for Persian language 
 - **Educational Repositories** – Tutorials on [GitHub](https://github.com/Ebimsv) and [Medium](https://medium.com/@ebimsv)
 
 ---
@@ -46,14 +76,12 @@ Welcome to my personal portfolio. I'm Ebrahim Mousavi, an AI researcher and deve
 
 ## 🎓 Teaching & Academic Roles
 
-- **Research Assistant** – *University of Tehran*  
-  *May 2024 – Jan 2025*  
-  Research in systems biology and bioinformatics.
-
 - **Teaching Assistant** – *Tarbiat Modares University*  
   *March 2020 – July 2024*  
   Taught Machine Learning and Neural Networks courses.
-
+- **Research Assistant** – *University of Tehran*  
+  *May 2024 – Jan 2025*  
+  Research in systems biology and bioinformatics.
 ---
 
 ## 🛠️ Tech Stack
@@ -72,80 +100,3 @@ Welcome to my personal portfolio. I'm Ebrahim Mousavi, an AI researcher and deve
 - [Google Scholar](https://scholar.google.com/citations?user=YFobHWAAAAAJ&hl=en)
 
 Email: **Ebimsv0501@gmail.com**
-
----
-
-## 🏆 Current Roles
-
-- **AI Team Lead – LLMs & Agents**  
-  *Makan System* (Aug 2024 – Present)  
-  Leading LLM design and fine-tuning, multi-GPU training, and RAG pipeline development.
-
-- **AI Instructor**  
-  *Freelancer* (July 2023 – Present)  
-  Published 100+ tutorials on ML, NLP, and LLMs. Developed curriculum for AI workflows.
-
-- **AI Team Lead**  
-  *Resana (Japan)* (Feb 2024 – Aug 2024)  
-  Developed image generative AI and LLM-based agents for document processing.
-
----
-
-## 🏆 Previous Experience
-
-- **Senior Computer Vision Developer**  
-  *AIHomeDesign, Vancouver, Canada* (Sep 2023 – Feb 2024)  
-  Developed and deployed vision-language models for real estate applications.
-
-- **Deep Learning Researcher**  
-  *Baharan Company & Freelance* (Jan 2021 – Aug 2023)  
-  AI solutions for computer vision and NLP.
-
-- **Network & Systems Engineer**  
-  *Freelance* (Feb 2017 – Mar 2020)  
-  Designed and maintained secure network infrastructures.
-
----
-
-## 📚 Education
-
-- **MSc in IT** – *Tarbiat Modares University* (2018–2021)  
-  Thesis: Fashion Recommendation System
-
-- **BSc in Software Engineering** – *Islamic Azad University* (2009–2015)  
-  Thesis: Pyramid Security System for Networks
-
----
-
-## 💬 Languages
-
-- **Persian** – Native
-- **English** – Professional proficiency (IELTS 6.0, Duolingo 110)
-- **Turkish** – Intermediate
-
----
-
-## 🧑‍🏫 Referees
-
-- **Prof. Gholam Ali Montazer**  
-  Professor of IT, Tarbiat Modares University  
-  Email: [Montazer@modares.ac.ir](mailto:Montazer@modares.ac.ir)  
-  [Google Scholar](https://scholar.google.com/citations?user=YFobHWAAAAAJ&hl=en)
-
----
-
-## 📝 Selected Research Projects
-
-- **LLMs and AI Agents Course** – Tutorial series on LLMs and AI agents.
-- **Large Language Model with PyTorch** – Custom LLM implementation.
-- **Protein Language Model** – GPT-based model for protein sequences.
-- **Facial Age Estimation** – Age prediction from facial images using Transformers.
-
----
-
-## 🌟 Strengths
-
-- Hard-working, Detail-Oriented, Team Player
-- Instructor & Mentor
-- Expertise in Python, Machine Learning, Deep Learning, NLP, Computer Vision
-- Experience with Generative AI, LLMs, Diffusion Models, AI Agents, LoRA & Fine-Tuning
