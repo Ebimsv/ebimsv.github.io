@@ -97,6 +97,6 @@ Welcome to my personal portfolio. I'm Ebrahim Mousavi, an AI researcher and deve
 - [LinkedIn](https://www.linkedin.com/in/ebimsv/)
 - [GitHub](https://github.com/Ebimsv)
 - [Medium Blog](https://medium.com/@ebimsv)
-- [Google Scholar](https://scholar.google.com/citations?user=YFobHWAAAAAJ&hl=en)
+- [Google Scholar](https://scholar.google.co.uk/citations?hl=en&user=1pfrUbQAAAAJ)
 
 Email: **Ebimsv0501@gmail.com**
