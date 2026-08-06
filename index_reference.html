@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahin Yousefi — AI Researcher | NLP</title>
+    <meta name="description" content="Shahin Yousefi">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                    },
+                    colors: {
+                        pri: {
+                            50:'#F4F8FA',100:'#E6F0F4',200:'#BDD6E2',
+                            300:'#8FBACB',400:'#6399AF',500:'#4F859A',
+                            600:'#3F6B7C',700:'#335564',800:'#284350',900:'#1C2F3A',
+                        },
+                        acc: {
+                            50:'#FDF8EF',100:'#FAF0D8',200:'#F0DDB0',
+                            300:'#E0C47E',400:'#D4A94E',500:'#C49A3C',
+                            600:'#A67E2E',700:'#876424',800:'#6B4F1E',900:'#503B17',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family:'Plus Jakarta Sans',sans-serif; background:#F5F6F8; color:#2C3644; }
+        .font-serif { font-family:'Instrument Serif',serif; }
+
+        .gradient-text {
+            background:linear-gradient(135deg,#6399AF,#D4A94E);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+
+        .gradient-border { position:relative; }
+        .gradient-border::before {
+            content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+            background:linear-gradient(135deg,#8FBACB,#E0C47E);
+            -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            -webkit-mask-composite:xor; mask-composite:exclude;
+            opacity:0; transition:opacity .3s ease;
+        }
+        .gradient-border:hover::before { opacity:1; }
+
+        .fade-in {
+            opacity:0; transform:translateY(24px);
+            transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+        }
+        .fade-in.visible { opacity:1; transform:translateY(0); }
+        .fd1{transition-delay:.1s}.fd2{transition-delay:.2s}.fd3{transition-delay:.3s}.fd4{transition-delay:.4s}
+
+        #nlp-canvas { position:absolute; inset:0; width:100%; height:100%; }
+
+        .nav-scrolled {
+            background:rgba(245,246,248,.88)!important;
+            backdrop-filter:blur(14px)!important;
+            border-bottom:1px solid #E2E8F0!important;
+        }
+        .nav-scrolled .nav-link { color:#4A5568!important; }
+        .nav-scrolled .nav-name { color:#1C2F3A!important; }
+
+        .tl-line {
+            position:absolute; left:15px; top:0; bottom:0; width:2px;
+            background:linear-gradient(to bottom,#8FBACB,#E0C47E);
+        }
+        @media(min-width:768px){ .tl-line{left:50%;transform:translateX(-50%);} }
+        .tl-dot {
+            width:12px;height:12px;border-radius:50%;
+            background:linear-gradient(135deg,#6399AF,#D4A94E);
+            border:2px solid white; box-shadow:0 0 0 2px #8FBACB;
+            position:absolute; left:10px; top:6px; z-index:2;
+        }
+        @media(min-width:768px){ .tl-dot{left:50%;transform:translateX(-50%);} }
+
+        .skill-icon {
+            width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+            border-radius:12px;font-size:28px;transition:transform .3s ease,box-shadow .3s ease;
+        }
+        .skill-icon:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(99,153,175,.15); }
+
+        .hobby-tag {
+            display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;
+            border:1px solid #E2E8F0;background:white;font-size:14px;font-weight:500;
+            color:#4A5568;transition:all .3s ease;
+        }
+        .hobby-tag:hover { border-color:#8FBACB;background:#F4F8FA;color:#1C2F3A; }
+
+        .skill-chip {
+            display:inline-block;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;
+            border:1px solid #E2E8F0;color:#4A5568;background:white;transition:all .2s ease;
+        }
+        .skill-chip:hover { border-color:#8FBACB;color:#1C2F3A;background:#F4F8FA; }
+
+        .pub-item {
+            border-left:3px solid;
+            border-image:linear-gradient(to bottom,#8FBACB,#E0C47E) 1;
+            padding-left:16px;
+        }
+
+        .mobile-menu { max-height:0;overflow:hidden;transition:max-height .3s ease; }
+        .mobile-menu.open { max-height:500px; }
+
+        @media(prefers-reduced-motion:reduce){
+            .fade-in{opacity:1;transform:none;transition:none;}
+        }
+
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#F5F6F8}
+        ::-webkit-scrollbar-thumb{background:#CBD5E0;border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:#A0AEC0}
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent;border-bottom:1px solid transparent;">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="nav-name font-serif text-xl text-white transition-colors duration-300">Shahin Yousefi</a>
+            <div class="hidden md:flex items-center gap-7">
+                <a href="#interests" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Research</a>
+                <a href="#education" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Education</a>
+                <a href="#publications" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Publications</a>
+                <a href="#research" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Experience</a>
+                <a href="#skills" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Skills</a>
+                <a href="#contact" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-white p-2 -mr-2" aria-label="Toggle menu">
+                <svg id="m-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+                <svg id="m-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100">
+            <div class="px-6 py-4 flex flex-col gap-3">
+                <a href="#interests" class="ml text-sm font-medium text-slate-700 py-2">Research</a>
+                <a href="#education" class="ml text-sm font-medium text-slate-700 py-2">Education</a>
+                <a href="#publications" class="ml text-sm font-medium text-slate-700 py-2">Publications</a>
+                <a href="#research" class="ml text-sm font-medium text-slate-700 py-2">Experience</a>
+                <a href="#skills" class="ml text-sm font-medium text-slate-700 py-2">Skills</a>
+                <a href="#contact" class="ml text-sm font-medium text-slate-700 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero: Visualization on top, text on bottom, cleanly separated -->
+    <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden">
+        <canvas id="nlp-canvas" aria-hidden="true"></canvas>
+
+        <!-- Dark gradient overlay for text readability -->
+        <div class="absolute bottom-0 left-0 right-0 z-[1] pointer-events-none" style="height:55%;background:linear-gradient(to bottom,rgba(10,13,17,0) 0%,rgba(10,13,17,0.88) 35%,rgba(10,13,17,0.98) 100%);"></div>
+
+        <!-- Text content pinned to bottom -->
+        <div class="relative z-10 mt-auto pb-16 text-center px-6 max-w-3xl mx-auto w-full">
+            <p class="text-sm font-medium tracking-widest uppercase text-white/40 mb-4 fade-in">AI Researcher &middot; Natural Language Processing</p>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-5 fade-in fd1" style="line-height:1.15">
+                Shahin <span class="gradient-text">Yousefi</span>
+            </h1>
+            <p class="text-base sm:text-lg text-white/50 max-w-xl mx-auto mb-8 fade-in fd2" style="font-weight:300">
+                Exploring the intersection of language, fairness, and computation to build more equitable AI systems.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 fade-in fd3">
+                <a href="#interests" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 transition-colors">
+                    View Research
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors">Get in Touch</a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 fade-in fd4">
+            <div class="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center p-1">
+                <div class="w-1 h-2 rounded-full bg-white/40 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6">
+
+        <!-- About Me — BEFORE Research Interests -->
+        <section id="about" class="pt-28 pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">About Me</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-8">A Brief Introduction</h2>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 sm:p-10 fade-in fd1">
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-light">
+                    I am an AI researcher passionate about Natural Language Processing, with a deep focus on bias and fairness, low-resource languages, and computational social science. My academic journey has been driven by a commitment to understanding and mitigating inequalities in language technologies across diverse linguistic communities. I believe that ethical and inclusive AI is not just a technical challenge, but a social responsibility. Through my research, I aim to build language models that are more equitable, transparent, and accessible for underrepresented languages and speakers.
+                </p>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section id="interests" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Research Interests</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">What I Work On</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Natural Language Processing</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Developing methods for understanding, generating, and reasoning with human language across diverse contexts and languages.</p>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Bias and Fairness</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Identifying, measuring, and mitigating systematic biases in language models to ensure equitable outcomes for all users.</p>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Low-resource Languages</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Bridging the digital divide by building NLP tools and resources for underrepresented and low-resource linguistic communities.</p>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Computational Social Science</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Leveraging large-scale text data to study social phenomena, public opinion, and the societal impact of language technologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Education</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Academic Background</h2>
+            </div>
+            <div class="relative pl-10 md:pl-0">
+                <div class="tl-line"></div>
+                <div class="relative mb-12 md:w-1/2 md:pr-12 md:ml-0 fade-in">
+                    <div class="tl-dot"></div>
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <span class="inline-block text-xs font-semibold tracking-wide uppercase text-pri-600 bg-pri-50 px-3 py-1 rounded-full mb-3">Sept 2018 — Feb 2022</span>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-1">Master of Computer Science</h3>
+                        <p class="text-sm text-pri-500 font-medium mb-2">Major: Artificial Intelligence</p>
+                        <p class="text-sm text-slate-500 mb-3">Institute for Advanced Studies in Basic Sciences (IASBS), Zanjan, Iran</p>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-3"><strong class="text-slate-700">Thesis:</strong> "Early Discovery of Emerging Entities in Persian Twitter with Online Clustering" — Score: 19/20</p>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-2"><strong class="text-slate-700">Supervisor:</strong> Dr. Mohsen Afsharchi &middot; <strong class="text-slate-700">Advisor:</strong> Dr. Mohsen Hooshmand</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-xs font-semibold bg-pri-50 text-pri-700 px-2.5 py-1 rounded-full">GPA: 4/4</span>
+                            <span class="text-xs font-semibold bg-acc-50 text-acc-700 px-2.5 py-1 rounded-full">Ranked 2nd</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative md:w-1/2 md:pl-12 md:ml-auto fade-in fd1">
+                    <div class="tl-dot"></div>
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <span class="inline-block text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-3 py-1 rounded-full mb-3">Sept 2010 — Sept 2014</span>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-1">Bachelor of Computer Engineering</h3>
+                        <p class="text-sm text-acc-500 font-medium mb-2">Major: Software Engineering</p>
+                        <p class="text-sm text-slate-500 mb-3">Institute of Higher Education of Science and Technology, Urmia, Iran</p>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-3"><strong class="text-slate-700">Thesis:</strong> "Designing and Implementing a Website for the Automation Department of Urmia Municipality" — Score: 19/20</p>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-2"><strong class="text-slate-700">Supervisor:</strong> Dr. Parviz Rashidi</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-xs font-semibold bg-pri-50 text-pri-700 px-2.5 py-1 rounded-full">GPA: 3/4</span>
+                            <span class="text-xs font-semibold bg-acc-50 text-acc-700 px-2.5 py-1 rounded-full">Ranked 4/22</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Publications</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Selected Works</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="pub-item fade-in fd3">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Accepted</span>
+                            <span class="text-xs text-slate-400">LaTeLL 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed"><strong class="text-slate-900">S. Yousefi</strong>, ELE. Valladares, R. Mitkov: "Cross-Lingual Hate Speech Detection in Low-Resource Languages: The Case of Persian and Kurdish"</p>
+                        <p class="text-xs text-slate-400 mt-2">International Conference on Language Technologies for Low-resource Languages</p>
+                    </div>
+                </div>
+                <div class="pub-item fade-in fd2">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-pri-600 bg-pri-50 px-2.5 py-1 rounded-full">To be Submitted</span>
+                            <span class="text-xs text-slate-400">ACL 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed"><strong class="text-slate-900">S. Yousefi</strong>, A. Spitz: "Bias and Fairness in Language Models for Low-Resource Languages: A Survey"</p>
+                        <p class="text-xs text-slate-400 mt-2">Association for Computational Linguistics</p>
+                    </div>
+                </div>
+                <div class="pub-item fade-in fd3">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Accepted</span>
+                            <span class="text-xs text-slate-400">ICWR 2023 — IEEE</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed"><strong class="text-slate-900">S. Yousefi</strong>, M. Hooshmand, M. Afsharchi: "Early Discovery of Emerging Entities in Persian Twitter with Semantic Similarity"</p>
+                        <p class="text-xs text-slate-400 mt-2">9th International Conference on Web Research, Published in: IEEE</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section id="research" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Research Experience</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Research Positions</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd1">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">Research Collaboration</h3><p class="text-sm text-pri-500 font-medium">University of Konstanz — Germany (Remote)</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Sep 2024 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-1"><strong class="text-slate-700">Supervisor:</strong> Prof. Andreas Spitz</p>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed mt-3">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Conducting a data-driven survey on Bias and Fairness in Language Models for Low-Resource Languages.</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Systematically reviewing and categorizing bias types, evaluation metrics, and mitigation strategies.</li>
+                    </ul>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd2">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">Research Assistant</h3><p class="text-sm text-acc-500 font-medium">IASBS — Zanjan, Iran (On-site)</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Apr 2023 — Jan 2024</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-1"><strong class="text-slate-700">Supervisor:</strong> Dr. Mohsen Afsharchi</p>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed mt-3">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Developed a multimodal dataset based on Instagram (image + text) for multimodal NLP research.</li>
+                    </ul>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd3">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">Research Intern</h3><p class="text-sm text-pri-500 font-medium">Bielefeld University — Germany (Remote)</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Oct 2022 — Jan 2023</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-1"><strong class="text-slate-700">Supervisor:</strong> Prof. Steffen Eger</p>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed mt-3">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Worked on Language Change and Dependency Parsing for Historical Languages using German and English datasets.</li>
+                    </ul>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd4">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">Research Assistant</h3><p class="text-sm text-acc-500 font-medium">IASBS — Zanjan, Iran (On-site)</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Jul 2022 — Mar 2023</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-1"><strong class="text-slate-700">Supervisor:</strong> Dr. Mohsen Hooshmand</p>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed mt-3">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Collected and curated data on Persian Twitter based on Wikipedia Knowledge Base.</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Built an emerging context dataset to discover emerging entities based on Twitter data.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Activities -->
+        <section id="activities" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Professional Activities</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Service & Engagement</h2>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1">
+                <div class="flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-lg bg-acc-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <h3 class="text-sm font-semibold text-slate-900">Organising Committee Member</h3>
+                            <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-0.5 rounded-full">May — Sept 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-600 font-medium mb-1">LaTeLL 2026 — International Conference on Language Technologies for Low-Resource Languages</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Fes, Morocco — Contributing to the organization and coordination of an international conference focused on NLP and low-resource languages.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2 mt-5">
+                <div class="flex items-start gap-4">
+                    <div class="w-9 h-9 rounded-lg bg-acc-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <h3 class="text-sm font-semibold text-slate-900">Invited Reviewer</h3>
+                            <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-0.5 rounded-full">Jun — Jul 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-600 font-medium mb-1">LaTeLL 2026</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">Reviewed 3 research papers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching Experience — AFTER Publications -->
+        <section id="teaching" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Teaching Experience</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Teaching Assistant</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd1">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Real Time Systems</h3>
+                            <p class="text-sm text-pri-500 font-medium">IASBS</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Mar — May 2021</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed"><strong class="text-slate-700">Instructor:</strong> Dr. Mahmoud Shirazi &middot; <strong class="text-slate-700">Textbook:</strong> Real-Time Systems — 2nd Ed., Jane W.S. Liu</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd2">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Advanced Database System</h3>
+                            <p class="text-sm text-acc-500 font-medium">IASBS</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Sept — Nov 2020</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed"><strong class="text-slate-700">Instructor:</strong> Dr. Mahmoud Shirazi &middot; <strong class="text-slate-700">Textbook:</strong> Fundamentals of Database Systems — 7th Ed., Elmasri & Navathe</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="work" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Work Experience</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Industry Roles</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd1">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">AI Researcher and Developer</h3><p class="text-sm text-pri-500 font-medium">TechChain</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Jun 2024 — Present</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Researched and deployed optimal NLP models while managing a team of 4 interns using Agile workflows.</li>
+                    </ul>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd2">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div><h3 class="text-lg font-semibold text-slate-900">Technical Support</h3><p class="text-sm text-acc-500 font-medium">Kavosh Ertebat (Himax | Pishgaman)</p></div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Sept 2014 — 2018</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0"></span>Provided technical support and managed IT infrastructure for telecommunications services.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industrial Projects -->
+        <section id="projects" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Industrial Projects</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Built at TechChain</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">Opal AI — Instagram Analytics</h3>
+                    <p class="text-xs text-pri-500 font-medium mb-3">AI Developer at TechChain</p>
+                    <ul class="space-y-2 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-pri-400 mt-2 flex-shrink-0"></span>SWOT analysis, automated posting schedules, AI-generated content ideas (image, video, voice).</li>
+                    </ul>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">Chatbot AI — RAG Pipeline</h3>
+                    <p class="text-xs text-acc-500 font-medium mb-3">Chatbot AI Developer at TechChain</p>
+                    <ul class="space-y-2 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-acc-400 mt-2 flex-shrink-0"></span>RAG pipelines over domain-specific documents (oil & gas) using Ollama for local LLM deployment.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Skills & Tools</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Technical Proficiency</h2>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 sm:p-10 mb-6 fade-in fd1">
+                <p class="text-xs font-semibold tracking-wide uppercase text-slate-400 mb-6 text-center">Core Technologies</p>
+                <div class="flex flex-wrap gap-6 justify-center">
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#3776AB]/10"><i class="devicon-python-plain" style="color:#3776AB"></i></div><span class="text-xs text-slate-500 font-medium">Python</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#00599C]/10"><i class="devicon-cplusplus-plain" style="color:#00599C"></i></div><span class="text-xs text-slate-500 font-medium">C++</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#EE4C2C]/10"><i class="devicon-pytorch-original" style="color:#EE4C2C"></i></div><span class="text-xs text-slate-500 font-medium">PyTorch</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#F7931E]/10"><i class="devicon-scikitlearn-plain" style="color:#F7931E"></i></div><span class="text-xs text-slate-500 font-medium">Scikit-learn</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#150458]/10"><i class="devicon-pandas-original" style="color:#150458"></i></div><span class="text-xs text-slate-500 font-medium">Pandas</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#013243]/10"><i class="devicon-numpy-original" style="color:#013243"></i></div><span class="text-xs text-slate-500 font-medium">NumPy</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#5C3EE8]/10"><i class="devicon-opencv-plain" style="color:#5C3EE8"></i></div><span class="text-xs text-slate-500 font-medium">OpenCV</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#47A248]/10"><i class="devicon-mongodb-plain" style="color:#47A248"></i></div><span class="text-xs text-slate-500 font-medium">MongoDB</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#F05032]/10"><i class="devicon-git-plain" style="color:#F05032"></i></div><span class="text-xs text-slate-500 font-medium">Git</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#2496ED]/10"><i class="devicon-docker-plain" style="color:#2496ED"></i></div><span class="text-xs text-slate-500 font-medium">Docker</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#FCC624]/10"><i class="devicon-linux-plain" style="color:#FCC624"></i></div><span class="text-xs text-slate-500 font-medium">Linux</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#FFD21E]/10"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c-.83 0-1.5-.67-1.5-1.5S12.67 9.5 13.5 9.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="#FFD21E"/></svg></div><span class="text-xs text-slate-500 font-medium">Hugging Face</span></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-pri-400"></span>NLP & ML Knowledge</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Text Classification</span><span class="skill-chip">NER</span><span class="skill-chip">Sentiment Analysis</span><span class="skill-chip">Word Embeddings</span><span class="skill-chip">Dependency Parsing</span><span class="skill-chip">Semantic Similarity</span><span class="skill-chip">Machine Translation</span><span class="skill-chip">Text Summarization</span><span class="skill-chip">Information Retrieval</span><span class="skill-chip">Keyword Extraction</span><span class="skill-chip">Document Understanding</span><span class="skill-chip">Web Scraping</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">Few-shot Learning</span><span class="skill-chip">Ethical NLP</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-acc-400"></span>Libraries, Frameworks & Models</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">NLTK</span><span class="skill-chip">FastText</span><span class="skill-chip">Tesseract OCR</span><span class="skill-chip">FastAPI</span><span class="skill-chip">LangChain</span><span class="skill-chip">LangGraph</span><span class="skill-chip">Flowise</span><span class="skill-chip">n8n</span><span class="skill-chip">SQL</span><span class="skill-chip">FAISS</span><span class="skill-chip">HuggingFace Transformers</span><span class="skill-chip">Open-Source LLMs (Ollama)</span><span class="skill-chip">PEFT / LoRA</span><span class="skill-chip">RAG Pipelines</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4">
+                <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gradient-to-r from-pri-400 to-acc-400"></span>Soft Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-chip">Technical Documentation</span><span class="skill-chip">Presentation</span><span class="skill-chip">Team Management</span><span class="skill-chip">Work Ethic</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages: English, German, Persian, Kurdish -->
+        <section id="languages" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Languages</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Spoken Languages</h2>
+            </div>
+            <div class="flex flex-wrap gap-4 fade-in fd1">
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4"><div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-pri-50 text-pri-700">En</div><div><p class="text-sm font-semibold text-slate-900">English</p><p class="text-xs text-slate-400">Fluent</p></div></div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4"><div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-acc-50 text-acc-700">De</div><div><p class="text-sm font-semibold text-slate-900">German</p><p class="text-xs text-slate-400">Elementary</p></div></div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4"><div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-pri-50 text-pri-700">Fa</div><div><p class="text-sm font-semibold text-slate-900">Persian</p><p class="text-xs text-slate-400">Fluent</p></div></div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4"><div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-acc-50 text-acc-700">Ku</div><div><p class="text-sm font-semibold text-slate-900">Kurdish</p><p class="text-xs text-slate-400">Native</p></div></div>
+            </div>
+        </section>
+
+        <!-- Accomplishments — original version -->
+        <section id="accomplishments" class="pb-20">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Accomplishments</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Selected Achievements</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--tw-colors-pri-100),var(--tw-colors-acc-100))">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">Paper Presentation</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Paper presentation at the 9th International Conference on Web Research (ICWR2023).</p>
+                    <p class="text-xs text-slate-400 mt-2">May 3-4, 2023</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#E6F0F4,#FAF0D8)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">Summer School</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Online summer school of "Data Analysis and Applications", Sino.</p>
+                    <p class="text-xs text-slate-400 mt-2">August 21 - September 2, 2022</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#E6F0F4,#FAF0D8)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">Deep Learning Workshop</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Workshop on "Deep Learning with PyTorch".</p>
+                    <p class="text-xs text-slate-400 mt-2">September 4-6, 2021 | Held virtually in Zanjan, Iran</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#E6F0F4,#FAF0D8)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">IPM Advanced School</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">5th IPM advanced school on "Computing Artificial Intelligence".</p>
+                    <p class="text-xs text-slate-400 mt-2">September 5-8, 2021 | Held virtually in Tehran, Iran</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,var(--tw-colors-pri-100),var(--tw-colors-acc-100))">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">Data Science in R</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Completion of the course on "Introduction to Data Science in R". Tutored by: Mohammad Shokoohi-Yekta - Data Scientist at Apple.</p>
+                    <p class="text-xs text-slate-400 mt-2">March 9, 2019 | Science and Technology Park, Zanjan, Iran</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#E6F0F4,#FAF0D8)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-900">Deep Learning Tutorial</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Participation in the "Deep Learning" tutorial at the International Conference on Contemporary Issues in Data Science (CiDaS).</p>
+                    <p class="text-xs text-slate-400 mt-2">March 5-6, 2019</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies — only Badminton, Reading, Travel, Singing, Tea Tasting -->
+        <section id="hobbies" class="pb-28">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Beyond Research</p>
+                <h2 class="font-serif text-3xl sm:text-4xl text-slate-900 mb-10">Hobbies & Interests</h2>
+            </div>
+            <div class="flex flex-wrap gap-3 fade-in fd1">
+                <span class="hobby-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Reading
+                </span>
+                <span class="hobby-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    Travel
+                </span>
+                <span class="hobby-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+                    Tea Tasting
+                </span>
+                <span class="hobby-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M12 9v6"/><path d="m8 12 4 3 4-3"/><path d="M4 21l4-6"/><path d="M20 21l-4-6"/></svg>
+                    Badminton
+                </span>
+                <span class="hobby-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F859A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    Singing
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="border-t border-slate-200/60 bg-white">
+        <div class="max-w-5xl mx-auto px-6 py-12">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="text-center sm:text-left">
+                    <p class="font-serif text-xl text-slate-900 mb-1">Shahin Yousefi</p>
+                    <p class="text-sm text-slate-400">AI Researcher &middot; Natural Language Processing</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/shyousefi" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+                    <a href="https://linkedin.com/in/shahin-yousefi" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <a href="mailto:sh.yousefi72@gmail.com" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+                    <a href="https://scholar.google.com/citations?user=shahin-yousefi" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="Google Scholar"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+                <p class="text-xs text-slate-400">&copy; 2025 Shahin Yousefi. Built with care for equitable AI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    /* ===========================================================
+       NLP Attention Visualization — Separated from text
+       Viz in upper portion, text pinned to bottom via CSS
+       =========================================================== */
+    (function(){
+        var canvas = document.getElementById('nlp-canvas');
+        var ctx = canvas.getContext('2d');
+        var prm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var W, H, dpr;
+
+        var words = ['The','doctor','told','the','nurse','that','she','was','tired'];
+
+        var arcs = [
+            {f:6,t:4,w:0.88,h:0},{f:6,t:1,w:0.22,h:0},{f:2,t:1,w:0.82,h:0},
+            {f:8,t:7,w:0.78,h:0},{f:3,t:4,w:0.65,h:0},
+            {f:6,t:1,w:0.72,h:1},{f:6,t:4,w:0.45,h:1},{f:7,t:6,w:0.80,h:1},
+            {f:0,t:1,w:0.58,h:1},{f:5,t:2,w:0.52,h:1},
+        ];
+
+        var particles = [];
+        arcs.forEach(function(a,i){
+            particles.push({arc:i,t:Math.random(),speed:0.0004+Math.random()*0.0006});
+            particles.push({arc:i,t:Math.random()+0.5,speed:0.0003+Math.random()*0.0005});
+        });
+
+        var neurons = [];
+        for(var i=0;i<50;i++) neurons.push({x:Math.random(),y:Math.random()*0.55,r:0.5+Math.random()*1.5,phase:Math.random()*Math.PI*2});
+
+        function resize(){
+            dpr = window.devicePixelRatio||1;
+            var r = canvas.getBoundingClientRect();
+            W = r.width; H = r.height;
+            canvas.width = W*dpr; canvas.height = H*dpr;
+            ctx.setTransform(dpr,0,0,dpr,0,0);
+        }
+
+        function col(h,a){ return h===0?'rgba(99,153,175,'+a+')':'rgba(212,169,78,'+a+')'; }
+        function glow(h){ return h===0?'rgba(99,153,175,0.7)':'rgba(212,169,78,0.7)'; }
+        function qBez(t,x0,y0,cx,cy,x1,y1){
+            var m=1-t; return {x:m*m*x0+2*m*t*cx+t*t*x1, y:m*m*y0+2*m*t*cy+t*t*y1};
+        }
+
+        function draw(time){
+            ctx.clearRect(0,0,W,H);
+
+            /* Background */
+            var bg = ctx.createRadialGradient(W*0.5,H*0.3,0,W*0.5,H*0.3,W*0.7);
+            bg.addColorStop(0,'#141A22'); bg.addColorStop(0.6,'#0E1318'); bg.addColorStop(1,'#0A0D11');
+            ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+            /* Dot grid (upper portion only) */
+            ctx.fillStyle = 'rgba(99,153,175,0.02)';
+            var gs = 50;
+            for(var x=gs;x<W;x+=gs) for(var y=gs;y<H*0.55;y+=gs){
+                ctx.beginPath(); ctx.arc(x,y,0.7,0,Math.PI*2); ctx.fill();
+            }
+
+            /* Floating neurons (upper area) */
+            if(!prm){
+                neurons.forEach(function(n){
+                    var nx = n.x*W;
+                    var ny = n.y*H + Math.sin(time*0.0005+n.phase)*6;
+                    var na = 0.03+Math.sin(time*0.0008+n.phase)*0.015;
+                    ctx.beginPath(); ctx.arc(nx,ny,n.r,0,Math.PI*2);
+                    ctx.fillStyle = 'rgba(99,153,175,'+Math.max(0,na)+')'; ctx.fill();
+                });
+            }
+
+            /* Word positions — in upper 35% of screen */
+            var scale = Math.min(1, W/900);
+            var fontSize = Math.max(11, Math.round(14*scale));
+            var spacing = Math.max(36, Math.round(84*scale));
+            var totalW = (words.length-1)*spacing;
+            var baseX = (W-totalW)/2;
+            var baseY = H * 0.28;
+
+            var wpos = [];
+            ctx.font = '500 '+fontSize+'px Plus Jakarta Sans, sans-serif';
+            words.forEach(function(w,i){
+                wpos.push({x:baseX+i*spacing, y:baseY, w:ctx.measureText(w).width});
+            });
+
+            /* Draw arcs */
+            arcs.forEach(function(a){
+                var s = wpos[a.f], e = wpos[a.t];
+                var dist = Math.abs(a.t-a.f);
+                var dir = a.t>a.f?1:-1;
+                var height = (35+dist*16+a.w*25)*scale;
+                var cx = (s.x+e.x)/2;
+                var cy = baseY - height*dir;
+                var pulse = prm?0:Math.sin(time*0.001+a.f*0.7)*0.04;
+                var alpha = 0.10+a.w*0.20+pulse;
+                var lw = (0.7+a.w*2)*scale;
+
+                /* Glow */
+                ctx.beginPath(); ctx.moveTo(s.x,s.y); ctx.quadraticCurveTo(cx,cy,e.x,e.y);
+                ctx.strokeStyle = col(a.h,alpha); ctx.lineWidth = lw+4;
+                ctx.shadowColor = glow(a.h); ctx.shadowBlur = 10; ctx.stroke(); ctx.shadowBlur = 0;
+                /* Crisp */
+                ctx.beginPath(); ctx.moveTo(s.x,s.y); ctx.quadraticCurveTo(cx,cy,e.x,e.y);
+                ctx.strokeStyle = col(a.h,alpha+0.10); ctx.lineWidth = lw; ctx.stroke();
+            });
+
+            /* Particles */
+            if(!prm){
+                particles.forEach(function(p){
+                    p.t += p.speed; if(p.t>1) p.t -= 1;
+                    var a = arcs[p.arc];
+                    var s = wpos[a.f], e = wpos[a.t];
+                    var dist = Math.abs(a.t-a.f); var dir = a.t>a.f?1:-1;
+                    var height = (35+dist*16+a.w*25)*scale;
+                    var cx = (s.x+e.x)/2; var cy = baseY - height*dir;
+                    var pt = qBez(p.t,s.x,s.y,cx,cy,e.x,e.y);
+                    var pr = (1+a.w*1.5)*scale;
+                    ctx.beginPath(); ctx.arc(pt.x,pt.y,pr,0,Math.PI*2);
+                    ctx.fillStyle = col(a.h,0.45+a.w*0.35);
+                    ctx.shadowColor = glow(a.h); ctx.shadowBlur = 6; ctx.fill(); ctx.shadowBlur = 0;
+                });
+            }
+
+            /* Word nodes */
+            wpos.forEach(function(wp,i){
+                ctx.beginPath(); ctx.arc(wp.x,wp.y,14*scale,0,Math.PI*2);
+                ctx.fillStyle = 'rgba(255,255,255,0.025)'; ctx.fill();
+                ctx.beginPath(); ctx.arc(wp.x,wp.y,3*scale,0,Math.PI*2);
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.shadowColor = 'rgba(255,255,255,0.3)'; ctx.shadowBlur = 5; ctx.fill(); ctx.shadowBlur = 0;
+                ctx.font = '500 '+fontSize+'px Plus Jakarta Sans, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.fillText(words[i], wp.x, wp.y+20*scale);
+
+                if(i===6){
+                    ctx.font = '600 '+(fontSize+1)+'px Plus Jakarta Sans, sans-serif';
+                    ctx.fillStyle = 'rgba(212,169,78,0.8)';
+                    ctx.fillText('she', wp.x, wp.y+20*scale);
+                    ctx.beginPath(); ctx.arc(wp.x,wp.y,5.5*scale,0,Math.PI*2);
+                    ctx.strokeStyle = 'rgba(212,169,78,0.45)'; ctx.lineWidth = 1.5; ctx.stroke();
+                }
+            });
+
+            /* Legend — below the viz, above the dark overlay */
+            var ly = baseY + 55*scale;
+            var lx = W*0.5 - 85*scale;
+            ctx.font = '500 '+Math.max(9,Math.round(10*scale))+'px Plus Jakarta Sans, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.beginPath(); ctx.moveTo(lx,ly); ctx.lineTo(lx+22*scale,ly);
+            ctx.strokeStyle = col(0,0.6); ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillText('Head 1 — Biased',lx+28*scale,ly+4);
+            ctx.beginPath(); ctx.moveTo(lx,ly+16*scale); ctx.lineTo(lx+22*scale,ly+16*scale);
+            ctx.strokeStyle = col(1,0.6); ctx.lineWidth = 2.5; ctx.stroke();
+            ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillText('Head 2 — Alternative',lx+28*scale,ly+16*scale+4);
+
+            /* Sentence label */
+            ctx.font = '400 '+Math.max(8,Math.round(9*scale))+'px Plus Jakarta Sans, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'rgba(255,255,255,0.15)';
+            ctx.fillText('"The doctor told the nurse that she was tired" — Coreference Resolution',W*0.5,ly+36*scale);
+
+            requestAnimationFrame(draw);
+        }
+
+        resize();
+        window.addEventListener('resize',resize);
+        requestAnimationFrame(draw);
+    })();
+
+    /* Nav scroll */
+    (function(){
+        var nav=document.getElementById('main-nav'),hero=document.getElementById('hero');
+        window.addEventListener('scroll',function(){
+            if(window.scrollY>hero.offsetHeight-80) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
+        });
+    })();
+
+    /* Mobile menu */
+    (function(){
+        var btn=document.getElementById('menu-btn'),menu=document.getElementById('mobile-menu'),
+            o=document.getElementById('m-open'),c=document.getElementById('m-close');
+        btn.addEventListener('click',function(){
+            var open=menu.classList.toggle('open');
+            o.classList.toggle('hidden',open);c.classList.toggle('hidden',!open);
+        });
+        menu.querySelectorAll('a').forEach(function(l){
+            l.addEventListener('click',function(){menu.classList.remove('open');o.classList.remove('hidden');c.classList.add('hidden');});
+        });
+    })();
+
+    /* Scroll reveal */
+    (function(){
+        var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+    })();
+    </script>
+</body>
+</html>

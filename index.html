@@ -1,136 +1,725 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebrahim Mousavi - AI Researcher & ML Engineer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ebrahim Mousavi — AI Engineer &amp; Researcher | NLP, Computer Vision, LLMs</title>
+    <meta name="description" content="Ebrahim Mousavi is an AI engineer and researcher specializing in natural language processing, machine learning, computer vision, and large language models. Ph.D. applicant based in Tehran, Iran.">
+    <meta name="author" content="Ebrahim Mousavi">
+    <meta name="keywords" content="Ebrahim Mousavi, AI Engineer, Computer Vision, NLP, Machine Learning, LLMs, Generative AI, PhD Applicant">
+    <link rel="canonical" href="https://ebimsv.github.io/">
+
+    <meta property="og:title" content="Ebrahim Mousavi — AI Engineer &amp; Researcher">
+    <meta property="og:description" content="AI engineer and researcher specializing in NLP, computer vision, and large language models.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebimsv.github.io/">
+    <meta property="og:image" content="https://ebimsv.github.io/images/profile.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                    },
+                    colors: {
+                        pri: {
+                            50:'#F0F5FA',100:'#DCE8F2',200:'#B5CFE3',
+                            300:'#7AABCC',400:'#4A89B0',500:'#2F6F98',
+                            600:'#255A7C',700:'#1E4864',800:'#183A50',900:'#122A3A',
+                        },
+                        acc: {
+                            50:'#F3F7F4',100:'#E0EBE3',200:'#BDD4C4',
+                            300:'#8FB59C',400:'#5E9474',500:'#467A5B',
+                            600:'#386249',700:'#2D4E3B',800:'#243E30',900:'#1B2F24',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family:'Plus Jakarta Sans',sans-serif; background:#F5F6F8; color:#2C3644; }
+        .font-serif { font-family:'Instrument Serif',serif; }
+
+        .gradient-text {
+            background:linear-gradient(135deg,#4A89B0,#5E9474);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+
+        .gradient-border { position:relative; }
+        .gradient-border::before {
+            content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+            background:linear-gradient(135deg,#7AABCC,#8FB59C);
+            -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+            -webkit-mask-composite:xor; mask-composite:exclude;
+            opacity:0; transition:opacity .3s ease;
+        }
+        .gradient-border:hover::before { opacity:1; }
+
+        .fade-in {
+            opacity:0; transform:translateY(24px);
+            transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+        }
+        .fade-in.visible { opacity:1; transform:translateY(0); }
+        .fd1{transition-delay:.1s}.fd2{transition-delay:.2s}.fd3{transition-delay:.3s}.fd4{transition-delay:.4s}
+
+        .nav-scrolled {
+            background:rgba(245,246,248,.88)!important;
+            backdrop-filter:blur(14px)!important;
+            border-bottom:1px solid #E2E8F0!important;
+        }
+        .nav-scrolled .nav-link { color:#4A5568!important; }
+        .nav-scrolled .nav-name { color:#122A3A!important; }
+
+        .tl-line {
+            position:absolute; left:15px; top:0; bottom:0; width:2px;
+            background:linear-gradient(to bottom,#7AABCC,#8FB59C);
+        }
+        @media(min-width:768px){ .tl-line{left:50%;transform:translateX(-50%);} }
+        .tl-dot {
+            width:12px;height:12px;border-radius:50%;
+            background:linear-gradient(135deg,#4A89B0,#5E9474);
+            border:2px solid white; box-shadow:0 0 0 2px #7AABCC;
+            position:absolute; left:10px; top:6px; z-index:2;
+        }
+        @media(min-width:768px){ .tl-dot{left:50%;transform:translateX(-50%);} }
+
+        .skill-icon {
+            width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+            border-radius:12px;font-size:28px;transition:transform .3s ease,box-shadow .3s ease;
+        }
+        .skill-icon:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(74,137,176,.15); }
+
+        .skill-chip {
+            display:inline-block;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;
+            border:1px solid #E2E8F0;color:#4A5568;background:white;transition:all .2s ease;
+        }
+        .skill-chip:hover { border-color:#7AABCC;color:#122A3A;background:#F0F5FA; }
+
+        .pub-item {
+            border-left:3px solid;
+            border-image:linear-gradient(to bottom,#7AABCC,#8FB59C) 1;
+            padding-left:16px;
+        }
+
+        .mobile-menu { max-height:0;overflow:hidden;transition:max-height .3s ease; }
+        .mobile-menu.open { max-height:500px; }
+
+        .profile-ring {
+            background:linear-gradient(135deg,#4A89B0,#5E9474);
+            padding:3px;border-radius:9999px;
+        }
+
+        @media(prefers-reduced-motion:reduce){
+            .fade-in{opacity:1;transform:none;transition:none;}
+        }
+
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#F5F6F8}
+        ::-webkit-scrollbar-thumb{background:#CBD5E0;border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:#A0AEC0}
+    </style>
 </head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <img src="images/profile.jpg" alt="Ebrahim Mousavi" class="profile-pic">
-            <h1>Ebrahim Mousavi</h1>    
-            <img src="https://readme-typing-svg.demolab.com?font=Georgia&size=18&duration=2000&pause=150&multiline=true&width=500&height=100&lines=AI+Researcher+%26+Engineer;Generative+AI+%7C+LLMs+%7C+NLP;Computer+Vision+%7C+Diffusion+Models" alt="Typing SVG"/>
+<body class="antialiased">
 
-            <ul class="contact-info">  
-                <li>📍 Tehran, Iran</li>  
-                <li>🏢 University of Tarbiat Modares</li>  
-                <li>📧 <a href="mailto:ebimsv0501@gmail.com" target="_blank">ebimsv0501@gmail.com</a></li>  
-                <li>👨‍🎓 <a href="https://scholar.google.com/citations?user=1pfrUbQAAAAJ&hl=en" target="_blank">Google Scholar</a></li>  
-                <li>🔗 <a href="https://www.linkedin.com/in/ebimsv/" target="_blank">LinkedIn</a></li>  
-                <li>🐙 <a href="https://github.com/Ebimsv" target="_blank">GitHub</a></li>  
-                <li>📝 <a href="https://medium.com/@ebimsv" target="_blank">Medium</a></li>  
-                <li>🔗 <a href="https://orcid.org/0000-0001-9320-3170" target="_blank">ORCID</a></li>  
-                <li>📸 <a href="https://www.instagram.com/ebiimsv/" target="_blank">Instagram</a></li>  
-                <li>🐦 <a href="https://x.com/ebiimsv" target="_blank">Twitter</a></li>  
-            </ul>
-        </aside>
-        
-        <main class="content">
-            <section>
-                <h2>About Me</h2>
-                <p>I'm a Generative AI researcher and engineer with expertise in Deep Learning, Computer Vision, and Natural Language Processing. My work focuses on developing and deploying Large Language Models (LLMs), Generative AI systems, and AI Agents, with experience in multi-GPU training, LoRA fine-tuning, tokenizer design, and RAG pipelines.</p>
-                <p>I am passionate about advancing LLM research and building real-world AI solutions, from generative vision models to domain-specific language models. Alongside research, I actively teach and publish tutorials to help developers and researchers build practical AI systems.</p>
-            
-                <h3>Current Roles:</h3>
-                <ul>
-                    <li>👨‍💻 <strong>AI Team Lead – LLMs & Agents</strong> (Aug 2024 – Present): Makan System / Research Collaborations – Leading design, fine-tuning, and deployment of custom LLMs for code generation, protein sequence analysis, and chatbot development for Persian language.</li>
-                    <li>📚 <strong>AI Instructor & Writer</strong> (July 2023 – Present): Publishing 100+ tutorials on ML, NLP, and LLMs on <a href="https://medium.com/@ebimsv" target="_blank">Medium</a>, and teaching real-world AI workflows with Python and PyTorch.</li>
-                    <li>🎓 <strong>Teaching Assistant</strong> (Mar 2020 – Jul 2024): Tarbiat Modares University, Tehran, Iran, supervised by <a href="https://scholar.google.com/citations?user=YFobHWAAAAAJ&hl=en" target="_blank">Prof. Gholam Ali Montazer</a> – assisted in Machine Learning and Neural Networks courses.</li>
-                </ul>
-                <div class="actions">
-                    <a href="files/Ebrahim_Mousavi_CV.pdf" download="Ebrahim_Mousavi_CV" class="button">Download CV</a>
-                    <a href="https://medium.com/@ebimsv" target="_blank" class="button">My AI Tutorials</a>  
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent;border-bottom:1px solid transparent;" aria-label="Primary">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="nav-name font-serif text-xl text-white transition-colors duration-300">Ebrahim Mousavi</a>
+            <div class="hidden md:flex items-center gap-7">
+                <a href="#about" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">About</a>
+                <a href="#experience" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Experience</a>
+                <a href="#education" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Education</a>
+                <a href="#research" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Research</a>
+                <a href="#projects" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Skills</a>
+                <a href="#contact" class="nav-link text-sm font-medium text-white/80 hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-white p-2 -mr-2" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg id="m-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+                <svg id="m-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100">
+            <div class="px-6 py-4 flex flex-col gap-3">
+                <a href="#about" class="ml text-sm font-medium text-slate-700 py-2">About</a>
+                <a href="#experience" class="ml text-sm font-medium text-slate-700 py-2">Experience</a>
+                <a href="#education" class="ml text-sm font-medium text-slate-700 py-2">Education</a>
+                <a href="#research" class="ml text-sm font-medium text-slate-700 py-2">Research</a>
+                <a href="#projects" class="ml text-sm font-medium text-slate-700 py-2">Projects</a>
+                <a href="#skills" class="ml text-sm font-medium text-slate-700 py-2">Skills</a>
+                <a href="#contact" class="ml text-sm font-medium text-slate-700 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden" style="background:radial-gradient(ellipse at 50% 30%,#141A22 0%,#0E1318 55%,#0A0D11 100%);">
+        <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true" style="background-image:radial-gradient(circle,#7AABCC 1px,transparent 1px);background-size:48px 48px;"></div>
+        <div class="absolute bottom-0 left-0 right-0 z-[1] pointer-events-none" style="height:50%;background:linear-gradient(to bottom,rgba(10,13,17,0) 0%,rgba(10,13,17,0.88) 40%,rgba(10,13,17,0.98) 100%);"></div>
+
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-end pb-16 text-center px-6 max-w-3xl mx-auto w-full pt-28">
+            <div class="profile-ring mb-8 fade-in">
+                <img src="images/profile.jpg" alt="Portrait of Ebrahim Mousavi" width="140" height="140" class="w-[140px] h-[140px] rounded-full object-cover block" fetchpriority="high">
+            </div>
+            <p class="text-sm font-medium tracking-widest uppercase text-white/40 mb-4 fade-in fd1">AI Engineer &middot; Computer Vision &middot; NLP &amp; LLMs</p>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-5 fade-in fd1" style="line-height:1.15">
+                Ebrahim <span class="gradient-text">Mousavi</span>
+            </h1>
+            <p class="text-base sm:text-lg text-white/50 max-w-xl mx-auto mb-8 fade-in fd2" style="font-weight:300">
+                Ph.D. applicant in Natural Language Processing &amp; Machine Learning. Building domain-specific LLMs, generative vision systems, and reproducible AI research.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 fade-in fd3">
+                <a href="files/Ebrahim_Mousavi_Academic_CV.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 transition-colors">
+                    Download CV
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </a>
+                <a href="#research" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors">View Research</a>
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors">Get in Touch</a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 fade-in fd4" aria-hidden="true">
+            <div class="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center p-1">
+                <div class="w-1 h-2 rounded-full bg-white/40 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-5xl mx-auto px-6">
+
+        <!-- About -->
+        <section id="about" class="pt-28 pb-20" aria-labelledby="about-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">About Me</p>
+                <h2 id="about-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-8">A Brief Introduction</h2>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 sm:p-10 fade-in fd1">
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-light mb-5">
+                    I am an AI engineer and researcher with a focus on natural language processing, machine learning, computer vision, and large language models. My work spans domain-specific LLM development—including supervised fine-tuning, LoRA/QLoRA, preference alignment, RAG pipelines, and agent systems—as well as generative vision models for real-world deployment.
+                </p>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-light">
+                    Based in Tehran, Iran, I lead applied R&amp;D across industry collaborations while teaching machine learning and mentoring students on deep learning and LLM research. I am seeking industry roles and Ph.D. opportunities at the intersection of NLP, multimodal learning, and efficient model training.
+                </p>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section id="interests" class="pb-20" aria-labelledby="interests-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Research Interests</p>
+                <h2 id="interests-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">What I Work On</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F6F98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Large Language Models</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">SFT, LoRA/QLoRA, alignment (DPO, GRPO), RAG, and agent workflows for domain-specific language models.</p>
                 </div>
-            </section>
-            
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#467A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Computer Vision &amp; Generative Models</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Diffusion pipelines, facial analysis, multi-modal feature learning, and production vision systems.</p>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F6F98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.8 15-3.5 2"/><path d="m20.7 17-3.5-2"/><path d="M6.8 9 3.3 7"/><path d="m20.7 7-3.5 2"/><circle cx="12" cy="12" r="4"/><path d="M12 16v6"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Efficient Training &amp; Deployment</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Multi-GPU training (FSDP/DeepSpeed), quantization (AWQ/GGUF), vLLM, TensorRT-LLM, and Dockerized serving.</p>
+                </div>
+                <div class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#467A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">AI Education &amp; Mentoring</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Open curricula, university teaching, and research mentorship in ML, deep learning, and LLMs.</p>
+                </div>
+            </div>
+        </section>
 
-            <section>
-                <h2>Publications</h2>
-                <ul>
-                    <li>📝 <a href="https://link.springer.com/article/10.1007/s40692-023-00303-w" target="_blank" rel="noopener noreferrer"><strong>ATTENDEE: AffecTive Tutoring system based on facial EmotioN recognition</strong></a> - Published in <em>Journal of Computers in Education</em> (Impact Factor: 4.3, <b>Q1</b>).</li>
-                    <li>📝 <a href="https://www.sciencedirect.com/science/article/abs/pii/S026772612300177X" target="_blank" rel="noopener noreferrer"><strong>FELA-DNN</strong></a> - Published in <em>Soil Dynamics and Earthquake Engineering</em> (Impact Factor: 4.2, <b>Q1</b>).</li>
-                </ul>
-                <p>📄 Full list on <a href="https://scholar.google.co.uk/citations?hl=en&user=1pfrUbQAAAAJ" target="_blank">Google Scholar</a>.</p>
-            </section>
-            
-            <section>  
-                <h2>Open-Source Projects</h2>  
-                <ul>  
-                    <li>  
-                        <a href="https://github.com/Ebimsv/Machine_Learning_Course" target="_blank">Machine Learning Course</a>
-                        <br>  
-                        <img alt="Stars" src="https://img.shields.io/github/stars/ebimsv/Machine_Learning_Course?style=flat-square&labelColor=black"/>  
-                        <br>
-                        I taught this comprehensive course at Tarbiat Modares University for master's and PhD students, covering the fundamental concepts of machine learning, 
-                        including supervised and unsupervised learning techniques, algorithms, and practical applications using Python.
-                    </li>  
-                    <li>  
-                        <a href="https://github.com/ebimsv/Facial_Age_estimation_PyTorch" target="_blank">Facial Age Estimation</a>  
-                        <br>  
-                        <img alt="Stars" src="https://img.shields.io/github/stars/Ebimsv/Facial_Age_estimation_PyTorch?style=flat-square&labelColor=black"/>  
-                        <br>  
-                        An implementation of facial age estimation using deep learning techniques in PyTorch, enabling the prediction of age from facial images with high accuracy.  
-                          
-                    </li>  
-                    <li>  
-                        <a href="https://github.com/Ebimsv/Torch-Linguist" target="_blank">Torch-Linguist</a>  
-                        <br>  
-                        <img alt="Stars" src="https://img.shields.io/github/stars/ebimsv/Torch-Linguist?style=flat-square&labelColor=black"/>  
-                        <br>  
-                        A language modeling project that implements LSTM (Long Short-Term Memory) networks from scratch using PyTorch, 
-                        aimed at understanding and applying deep learning techniques for sequential data.
-                          
-                    </li>    
-                </ul>  
-            </section>  
-            
-            <section>  
-                <h2>AI Tutorials: Theory and Code Combined</h2>  
-                <table border="1" cellspacing="0" cellpadding="5">
-                    <tr>
-                        <th>Course</th>
-                        <th>Tutorials Count</th>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/machine-learning-series-day-1-introduction-c3b6e8410a1e" target="_blank" rel="noopener noreferrer">Machine Learning Series</a></td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/ml-series-day-17-essential-probability-concepts-from-sample-space-to-probability-rules-962ba5e3dfc9" target="_blank" rel="noopener noreferrer">Probability & Statistics</a></td>
-                        <td>28</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/mastering-linear-algebra-part-1-introduction-to-linear-algebra-in-machine-learning-fafcae1a5879" target="_blank" rel="noopener noreferrer">Linear Algebra for AI</a></td>
-                        <td>8</td>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/mastering-python-for-ai-week-1-introduction-to-python-977cbbb659d7" target="_blank" rel="noopener noreferrer">Python for AI</a></td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/mastering-pandas-part-5-data-aggregation-and-grouping-d5f1f2df2114" target="_blank" rel="noopener noreferrer">Mastering Pandas</a></td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/mastering-matplotlib-part-9-integrating-matplotlib-with-other-libraries-ba93071ec8bf" target="_blank" rel="noopener noreferrer">Mastering Matplotlib</a></td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/complex-network-series-part-1-an-overview-ddd9e0b6ec3a" target="_blank" rel="noopener noreferrer">Complex Network Series</a></td>
-                        <td>7</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/nlp-series-day-1-foundations-of-natural-language-processing-1187cb56c26d" target="_blank" rel="noopener noreferrer">NLP Series</a></td>
-                        <td>6 (In progress)</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://medium.com/@ebimsv/mastering-cnns-in-pytorch-week-1-fundamentals-of-convolutional-neural-networks-cnns-f89e4e3fa12b" target="_blank" rel="noopener noreferrer">Mastering CNNs in PyTorch</a></td>
-                        <td>3 (In progress)</td>
-                    </tr>
-                </table>
-            </section>            
-        </main>
-    </div>
+        <!-- Industry Experience -->
+        <section id="experience" class="pb-20" aria-labelledby="experience-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Industry Experience</p>
+                <h2 id="experience-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Professional Roles</h2>
+            </div>
+            <div class="space-y-6">
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd1">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">AI Team Lead — LLMs &amp; Agents</h3>
+                            <p class="text-sm text-pri-500 font-medium">Makan System</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Aug 2024 — Present</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Lead LLM and agent R&amp;D for research collaborations on domain-specific models, RAG, and efficient deployment.</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>SFT, LoRA/QLoRA, alignment (DPO, GRPO), and 4-bit deployment (+22% benchmark gain, −35% hallucination, −60% latency).</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd2">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">AI Team Lead</h3>
+                            <p class="text-sm text-acc-500 font-medium">Resana — Tehran, Iran</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Feb 2024 — Aug 2024</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Led generative image models and intelligent document processing agents, achieving 94% accuracy in automated structured data extraction from complex documents.</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd3">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Computer Vision Developer</h3>
+                            <p class="text-sm text-pri-500 font-medium">AIHomeDesign — Remote</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Sept 2023 — Feb 2024</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Designed and deployed Stable Diffusion pipelines for real-estate image enhancement, including virtual staging and scene transformation.</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Optimized high-resolution diffusion inference for 10,000+ daily image transformations.</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd4">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Deep Learning Researcher and Developer</h3>
+                            <p class="text-sm text-acc-500 font-medium">Baharan Company — Tehran, Iran</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Jan 2021 — Aug 2023</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Implemented production computer vision systems for facial recognition, identity verification, and intelligent image analysis.</li>
+                    </ul>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Network Engineering</h3>
+                            <p class="text-sm text-pri-500 font-medium">Freelance / Contract Roles — Iran</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">Feb 2017 — Mar 2020</span>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-500 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pri-400 to-acc-400 mt-1.5 flex-shrink-0" aria-hidden="true"></span>Designed and maintained secure network infrastructures using Cisco (CCNA-level) and Microsoft enterprise systems.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="pb-20" aria-labelledby="education-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Education</p>
+                <h2 id="education-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Academic Background</h2>
+            </div>
+            <div class="relative pl-10 md:pl-0">
+                <div class="tl-line" aria-hidden="true"></div>
+                <div class="relative mb-12 md:w-1/2 md:pr-12 md:ml-0 fade-in">
+                    <div class="tl-dot" aria-hidden="true"></div>
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <span class="inline-block text-xs font-semibold tracking-wide uppercase text-pri-600 bg-pri-50 px-3 py-1 rounded-full mb-3">Sept 2018 — Sept 2021</span>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-1">M.Sc. in Information Technology</h3>
+                        <p class="text-sm text-pri-500 font-medium mb-2">Artificial Intelligence Focus</p>
+                        <p class="text-sm text-slate-500 mb-3">Tarbiat Modares University, Tehran, Iran</p>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-3"><strong class="text-slate-700">Thesis:</strong> Designing a Fashion Recommendation System using Deep Learning — multi-modal pipeline fusing visual and textual product features.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed"><strong class="text-slate-700">Advisor:</strong> Prof. Gholam Ali Montazer</p>
+                    </div>
+                </div>
+                <div class="relative md:w-1/2 md:pl-12 md:ml-auto fade-in fd1">
+                    <div class="tl-dot" aria-hidden="true"></div>
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <span class="inline-block text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-3 py-1 rounded-full mb-3">Feb 2009 — Feb 2015</span>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-1">B.Sc. in Software Engineering</h3>
+                        <p class="text-sm text-acc-500 font-medium mb-2">Islamic Azad University, Isfahan, Iran</p>
+                        <p class="text-sm text-slate-500 leading-relaxed"><strong class="text-slate-700">Thesis:</strong> Implementation of a Pyramid Security System with Firewall</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research & Publications -->
+        <section id="research" class="pb-20" aria-labelledby="research-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Research &amp; Publications</p>
+                <h2 id="research-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Selected Works</h2>
+            </div>
+
+            <h3 class="text-sm font-semibold tracking-wide uppercase text-slate-400 mb-4 fade-in">Peer-Reviewed Journal Articles</h3>
+            <div class="space-y-6 mb-10">
+                <div class="pub-item fade-in fd1">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Published</span>
+                            <span class="text-xs text-slate-400">Q1 · 2025</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Pourmirzaei, M., Montazer, G.A., <strong class="text-slate-900">Mousavi, E.</strong>
+                            <a href="https://link.springer.com/article/10.1007/s40692-023-00303-w" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline"> ATTENDEE: an AffecTive Tutoring system based on facial EmotioN recognition and heaD posE Estimation to personalize e-learning environment</a>.
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">Journal of Computers in Education, 12: 65–92. doi:10.1007/s40692-023-00303-w</p>
+                    </div>
+                </div>
+                <div class="pub-item fade-in fd2">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Published</span>
+                            <span class="text-xs text-slate-400">Q1 · August 2023</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Beygi, M., Fallahi, M., Vali, R., <strong class="text-slate-900">Mousavi, E.</strong>, Saberian, M., Li, J., Barari, A.
+                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S026772612300177X" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline"> FELA-DNN framework to predict the seismic bearing capacity of skirted strip footing built on a non-cohesive slope</a>.
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">Soil Dynamics and Earthquake Engineering, 171: 107932. doi:10.1016/j.soildyn.2023.107932</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-sm font-semibold tracking-wide uppercase text-slate-400 mb-4 fade-in">Preprints</h3>
+            <div class="space-y-6 mb-10">
+                <div class="pub-item fade-in fd1">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-pri-600 bg-pri-50 px-2.5 py-1 rounded-full">Preprint</span>
+                            <span class="text-xs text-slate-400">2024</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Amiri, M., Montazer, G.A., <strong class="text-slate-900">Mousavi, E.</strong>
+                            <a href="https://arxiv.org/abs/2408.12619" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline"> Educational Customization by Homogenous Grouping of e-Learners based on their Learning Styles</a>.
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">arXiv:2408.12619</p>
+                    </div>
+                </div>
+                <div class="pub-item fade-in fd2">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-pri-600 bg-pri-50 px-2.5 py-1 rounded-full">Preprint</span>
+                            <span class="text-xs text-slate-400">2021</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Pourmirzaei, M., Montazer, G.A., Esmaili, F., <strong class="text-slate-900">Mousavi, E.</strong>, Karamizadeh, S.
+                            <a href="https://arxiv.org/abs/2108.04893" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline"> How Self-Supervised Learning Can be Used for Fine-Grained Head Pose Estimation?</a>
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">arXiv:2108.04893</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-sm font-semibold tracking-wide uppercase text-slate-400 mb-4 fade-in">In Preparation</h3>
+            <div class="space-y-6">
+                <div class="pub-item fade-in fd1">
+                    <div class="rounded-2xl border border-slate-200/60 bg-white p-6">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-1 rounded-full">In Preparation</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            <strong class="text-slate-900">ProtBERT-NER:</strong> Transformer-based sequence labeling for post-translational modification sites in cancer-associated proteins. Manuscript in preparation from Ph.D. thesis supervision of Sima Abolhassani Khajeh.
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">Contribution: Thesis supervision and ML/DL/LLM instruction; major ProtBERT implementation, training pipelines, and benchmarking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-sm text-slate-500 mt-8 fade-in">
+                Full list on
+                <a href="https://scholar.google.com/citations?user=1pfrUbQAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline font-medium">Google Scholar</a>.
+            </p>
+        </section>
+
+        <!-- Teaching & Mentoring -->
+        <section id="teaching" class="pb-20" aria-labelledby="teaching-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Teaching &amp; Mentoring</p>
+                <h2 id="teaching-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Education &amp; Mentorship</h2>
+            </div>
+            <div class="space-y-6 mb-10">
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd1">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">Machine Learning Course</h3>
+                            <p class="text-sm text-pri-500 font-medium">Tarbiat Modares University — Tehran</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">2020 — 2023</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Taught machine learning for master’s and Ph.D. students over five semesters under Prof. Gholam Ali Montazer. Course materials maintained in an <a href="https://github.com/Ebimsv/Machine_Learning_Course" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline">open-source repository</a>.</p>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd2">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">AI Instructor &amp; Technical Writer</h3>
+                            <p class="text-sm text-acc-500 font-medium">Freelance, Remote</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">2023 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Developed instructional materials on ML, deep learning, GenAI, LLMs, and PyTorch; authored 100+ tutorials with 120,000+ cumulative views on <a href="https://medium.com/@ebimsv" target="_blank" rel="noopener noreferrer" class="text-pri-600 hover:underline">Medium</a>.</p>
+                </article>
+                <article class="rounded-2xl border border-slate-200/60 bg-white p-6 sm:p-8 fade-in fd3">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-900">LLMs and AI Agents Course</h3>
+                            <p class="text-sm text-pri-500 font-medium">Open-source curriculum</p>
+                        </div>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-slate-400 bg-slate-100 px-3 py-1 rounded-full whitespace-nowrap self-start">2023 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Open-source curriculum developer for GenAI, LLMs, and AI agents.</p>
+                </article>
+            </div>
+
+            <h3 class="text-sm font-semibold tracking-wide uppercase text-slate-400 mb-4 fade-in">Mentoring</h3>
+            <div class="space-y-5">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1">
+                    <div class="flex flex-wrap items-center gap-3 mb-2">
+                        <h4 class="text-sm font-semibold text-slate-900">Sima Abolhassani Khajeh</h4>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-0.5 rounded-full">2024 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Ph.D. student, Islamic Azad University, Qeshm International Branch. Supervised thesis on protein language models and PTM site prediction (ProtBERT-NER); mentored through ML, DL, and LLM coursework.</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2">
+                    <div class="flex flex-wrap items-center gap-3 mb-2">
+                        <h4 class="text-sm font-semibold text-slate-900">Zahra Tavakoli Rad</h4>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-0.5 rounded-full">2024 — 2025</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Computer science student, Dalhousie University, Canada. Mentored on M.Sc. thesis research on code-understanding language models, including model design, training workflows, and scholarly writing.</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3">
+                    <div class="flex flex-wrap items-center gap-3 mb-2">
+                        <h4 class="text-sm font-semibold text-slate-900">Engineers &amp; Students (50+)</h4>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-acc-600 bg-acc-50 px-2.5 py-0.5 rounded-full">2023 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed">Remote, independent ML/DL/GenAI mentorship through structured programs on project design, experimentation, and reproducible model development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Projects -->
+        <section id="projects" class="pb-20" aria-labelledby="projects-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Selected Projects</p>
+                <h2 id="projects-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Open-Source &amp; Applied Work</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <article class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd1 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F6F98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.8 15-3.5 2"/><path d="m20.7 17-3.5-2"/><circle cx="12" cy="12" r="4"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">
+                        <a href="https://github.com/Ebimsv/Machine_Learning_Course" target="_blank" rel="noopener noreferrer" class="hover:text-pri-600 transition-colors">Machine Learning Course</a>
+                    </h3>
+                    <p class="text-xs text-pri-500 font-medium mb-3">Open-source curriculum · TMU</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Comprehensive ML course for master’s and Ph.D. students covering supervised and unsupervised learning with practical Python applications.</p>
+                </article>
+                <article class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#467A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">LLMs and AI Agents Course</h3>
+                    <p class="text-xs text-acc-500 font-medium mb-3">Tutorial series · GenAI deployments</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Comprehensive tutorial series on generative AI, LLMs, and AI agent deployments.</p>
+                    <!-- TODO: Add public repository URL when available -->
+                </article>
+                <article class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3 transition-shadow hover:shadow-lg hover:shadow-pri-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-pri-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F6F98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">LLM-Lab</h3>
+                    <p class="text-xs text-pri-500 font-medium mb-3">From-scratch LLM implementation</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">From-scratch LLM implementation emphasizing training efficiency and text generation fundamentals.</p>
+                    <!-- TODO: Add public repository URL when available -->
+                </article>
+                <article class="gradient-border rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4 transition-shadow hover:shadow-lg hover:shadow-acc-100/60">
+                    <div class="w-10 h-10 rounded-xl bg-acc-50 flex items-center justify-center mb-4" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#467A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-slate-900 mb-1">
+                        <a href="https://github.com/Ebimsv/Facial_Age_estimation_PyTorch" target="_blank" rel="noopener noreferrer" class="hover:text-pri-600 transition-colors">Facial Age Estimation</a>
+                    </h3>
+                    <p class="text-xs text-acc-500 font-medium mb-3">PyTorch · Computer vision</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Deep learning pipeline for predicting human age from facial images.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="pb-20" aria-labelledby="skills-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-acc-400 mb-3">Skills &amp; Tools</p>
+                <h2 id="skills-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Technical Proficiency</h2>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-white p-8 sm:p-10 mb-6 fade-in fd1">
+                <p class="text-xs font-semibold tracking-wide uppercase text-slate-400 mb-6 text-center">Core Technologies</p>
+                <div class="flex flex-wrap gap-6 justify-center">
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#3776AB]/10"><i class="devicon-python-plain" style="color:#3776AB" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">Python</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#EE4C2C]/10"><i class="devicon-pytorch-original" style="color:#EE4C2C" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">PyTorch</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#FF6F00]/10"><i class="devicon-tensorflow-original" style="color:#FF6F00" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">TensorFlow</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#5C3EE8]/10"><i class="devicon-opencv-plain" style="color:#5C3EE8" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">OpenCV</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#F7931E]/10"><i class="devicon-scikitlearn-plain" style="color:#F7931E" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">Scikit-learn</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#013243]/10"><i class="devicon-numpy-original" style="color:#013243" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">NumPy</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#F05032]/10"><i class="devicon-git-plain" style="color:#F05032" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">Git</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#2496ED]/10"><i class="devicon-docker-plain" style="color:#2496ED" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">Docker</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#FCC624]/10"><i class="devicon-linux-plain" style="color:#FCC624" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">Linux</span></div>
+                    <div class="flex flex-col items-center gap-2"><div class="skill-icon bg-[#336791]/10"><i class="devicon-postgresql-plain" style="color:#336791" aria-hidden="true"></i></div><span class="text-xs text-slate-500 font-medium">SQL</span></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd2">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-pri-400" aria-hidden="true"></span>Machine Learning &amp; NLP</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Transformers</span>
+                        <span class="skill-chip">LLMs</span>
+                        <span class="skill-chip">LoRA / QLoRA</span>
+                        <span class="skill-chip">DPO / GRPO</span>
+                        <span class="skill-chip">RAG</span>
+                        <span class="skill-chip">LangChain</span>
+                        <span class="skill-chip">LangGraph</span>
+                        <span class="skill-chip">AutoGen</span>
+                        <span class="skill-chip">CrewAI</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd3">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-acc-400" aria-hidden="true"></span>Computer Vision &amp; Generative Models</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Diffusion Models</span>
+                        <span class="skill-chip">Facial Analysis</span>
+                        <span class="skill-chip">Multi-modal Learning</span>
+                        <span class="skill-chip">Stable Diffusion</span>
+                        <span class="skill-chip">PyTorch</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 rounded-2xl border border-slate-200/60 bg-white p-6 fade-in fd4">
+                <h3 class="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gradient-to-r from-pri-400 to-acc-400" aria-hidden="true"></span>Research Engineering</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-chip">Multi-GPU (FSDP / DeepSpeed)</span>
+                    <span class="skill-chip">vLLM</span>
+                    <span class="skill-chip">TensorRT-LLM</span>
+                    <span class="skill-chip">Quantization (AWQ / GGUF)</span>
+                    <span class="skill-chip">Docker</span>
+                    <span class="skill-chip">Linux</span>
+                    <span class="skill-chip">Python</span>
+                    <span class="skill-chip">SQL</span>
+                    <span class="skill-chip">Git</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section id="languages" class="pb-28" aria-labelledby="languages-heading">
+            <div class="fade-in">
+                <p class="text-xs font-semibold tracking-widest uppercase text-pri-400 mb-3">Languages</p>
+                <h2 id="languages-heading" class="font-serif text-3xl sm:text-4xl text-slate-900 mb-12">Spoken Languages</h2>
+            </div>
+            <div class="flex flex-wrap gap-4 fade-in fd1">
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-pri-50 text-pri-700" aria-hidden="true">En</div>
+                    <div><p class="text-sm font-semibold text-slate-900">English</p><p class="text-xs text-slate-400">Advanced (IELTS 6.5; Duolingo 110)</p></div>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-acc-50 text-acc-700" aria-hidden="true">Tr</div>
+                    <div><p class="text-sm font-semibold text-slate-900">Turkish</p><p class="text-xs text-slate-400">Intermediate</p></div>
+                </div>
+                <div class="rounded-2xl border border-slate-200/60 bg-white px-6 py-5 flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-pri-50 text-pri-700" aria-hidden="true">Fa</div>
+                    <div><p class="text-sm font-semibold text-slate-900">Persian</p><p class="text-xs text-slate-400">Native</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="border-t border-slate-200/60 bg-white" aria-labelledby="contact-heading">
+        <div class="max-w-5xl mx-auto px-6 py-12">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="text-center lg:text-left">
+                    <h2 id="contact-heading" class="font-serif text-xl text-slate-900 mb-1">Ebrahim Mousavi</h2>
+                    <p class="text-sm text-slate-400 mb-3">AI Engineer &amp; Researcher &middot; Tehran, Iran</p>
+                    <a href="mailto:ebimsv0501@gmail.com" class="text-sm text-pri-600 hover:underline">ebimsv0501@gmail.com</a>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="files/Ebrahim_Mousavi_Academic_CV.pdf" download class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-pri-600 hover:bg-pri-700 transition-colors">
+                        Download CV
+                    </a>
+                    <a href="https://github.com/Ebimsv" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ebimsv/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="mailto:ebimsv0501@gmail.com" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=1pfrUbQAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="Google Scholar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+                    </a>
+                    <a href="https://medium.com/@ebimsv" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="Medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41-1.87 0-3.39-2.87-3.39-6.41s1.52-6.41 3.39-6.41 3.38 2.87 3.38 6.41M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                    </a>
+                    <a href="https://orcid.org/0000-0001-9320-3170" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-all" aria-label="ORCID">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.688-1.381 3.688-3.722 0-2.297-1.281-3.722-3.688-3.722h-2.297z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+                <p class="text-xs text-slate-400">&copy; 2026 Ebrahim Mousavi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        var nav = document.getElementById('main-nav');
+        var hero = document.getElementById('hero');
+        window.addEventListener('scroll', function(){
+            if (window.scrollY > hero.offsetHeight - 80) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
+        });
+    })();
+
+    (function(){
+        var btn = document.getElementById('menu-btn');
+        var menu = document.getElementById('mobile-menu');
+        var o = document.getElementById('m-open');
+        var c = document.getElementById('m-close');
+        btn.addEventListener('click', function(){
+            var open = menu.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            o.classList.toggle('hidden', open);
+            c.classList.toggle('hidden', !open);
+        });
+        menu.querySelectorAll('a').forEach(function(l){
+            l.addEventListener('click', function(){
+                menu.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                o.classList.remove('hidden');
+                c.classList.add('hidden');
+            });
+        });
+    })();
+
+    (function(){
+        var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){
+                if (en.isIntersecting) en.target.classList.add('visible');
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
+    })();
+    </script>
 </body>
 </html>
